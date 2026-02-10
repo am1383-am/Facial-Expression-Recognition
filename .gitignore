@@ -210,3 +210,11 @@ __marimo__/
 # --- My Project Data ---
 data/
 models/
+
+# Ignore Heavy Model Weights
+*.pt
+*.pth
+*.h5
+*.ckpt
+*.pkl
+*.onnx
