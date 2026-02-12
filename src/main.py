@@ -1,9 +1,11 @@
 import os
+import pickle
 from preprocessing.data_loader import get_data_generators
 from models.baseline_model import build_model
 from training.train import train_model
+from utils.plot_results import plot_history
 from evaluation.evaluator import evaluate_model
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 
 EMOTIONS = {
     'angry': 0, 'disgust': 1, 'fear': 2, 'happy': 3,
@@ -14,6 +16,7 @@ def main():
     csv_path = 'data/raw/dataset_cleaned.csv'
     img_dir = 'data/raw/'
     model_path = 'models/baseline_model.keras'
+    history_path = 'models/history.pkl'
 
     print("--- Phase 1: Data Preparation ---")
     train_gen, val_gen, test_gen = get_data_generators(csv_path, img_dir)
@@ -45,7 +48,14 @@ def main():
         model.summary()
 
         print("--- Phase 3: Training ---")
-        train_model(model, train_gen, val_gen, epochs=30)
+        history = train_model(model, train_gen, val_gen, epochs=30)
+
+        print(f"Saving training history to {history_path}...")
+        with open(history_path, 'wb') as f:
+            pickle.dump(history.history, f)
+
+        print("Plotting training history...")
+        plot_history(history)
         
         print(f"Saving model to {model_path}...")
         model.save(model_path)
