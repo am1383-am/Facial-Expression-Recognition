@@ -1,11 +1,14 @@
 import os
 import pickle
-from preprocessing.data_loader import get_data_generators
-from models.final_model import build_final_model 
-from training.train import train_model
-from evaluation.evaluator import evaluate_model 
-from utils.plot_results import plot_history
-
+import sys
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+from src.preprocessing.data_loader import get_data_generators
+from src.models.final_model import build_final_model 
+from src.training.train import train_model
+from src.evaluation.evaluator import evaluate_model 
+from src.utils.plot_results import plot_history
 EMOTIONS = {
     'angry': 0, 'disgust': 1, 'fear': 2, 'happy': 3,
     'sad': 4, 'surprise': 5, 'neutral': 6, 'contempt': 7
