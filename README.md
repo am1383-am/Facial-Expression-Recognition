@@ -35,8 +35,17 @@ Preprocessing: Includes Resizing (48x48), Normalization, and Data Augmentation (
 
 🧠 Phase 2: Model Implementation & Training
 
-Architecture: A modular CNN baseline with Batch Normalization and Dropout layers.
+- Architecture: A modular CNN baseline with Batch Normalization and Dropout layers.
 
-Training: Monitored using Loss and Accuracy curves to detect Overfitting/Underfitting.
+- Training: Monitored using Loss and Accuracy curves to detect Overfitting/Underfitting.
 
-Optimization: Hyperparameter tuning of learning rates and optimizers (Adam/SGD).
+- Optimization: Hyperparameter tuning of learning rates and optimizers (Adam/SGD).
+
+🧪 Evaluation
+The model is evaluated based on standard metrics:
+
+- Accuracy & F1-Score.
+
+- Confusion Matrix to analyze misclassified emotions.
+
+- Error Analysis: Identifying "Hard Examples" where the model fails
