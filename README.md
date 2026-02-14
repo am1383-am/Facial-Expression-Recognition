@@ -82,19 +82,26 @@ This project addresses the challenge of classifying human facial expressions int
 git clone https://github.com/SoroushSoleimani/Facial-Expression-Recognition.git
 ```
 
-2- **Install dependencies:**
+2- **Download Dataset:**
+
+```bash
+mkdir -p data/raw
+kaggle datasets download -d arnabkumarroy02/ferplus --unzip -p data/raw
+```
+
+3- **Install dependencies:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3- **Run Training:**
+4- **Run Training:**
 
 ```bash
 python src/training/train.py
 ```
 
-4- **Run Evaluation:**
+5- **Run Evaluation:**
 
 ```bash
 python src/evaluation/evaluate.py
