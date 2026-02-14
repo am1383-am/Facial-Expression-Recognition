@@ -6,22 +6,18 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 try:
     from src.data_preparation.data_preparation import run_preparation
 except ImportError as e:
-    print(f"Error importing Data Preparation module: {e}")
-    def run_preparation(): print("Error: Data Preparation module not found.")
+    def run_preparation(): print("Error: Data Preparation module not found in src/data_preparation/.")
 
 try:
     from src.training_pipeline import main as run_training_pipeline
 except ImportError as e:
-    print(f"Error importing Training module: {e}")
-    def run_training_pipeline(): print("Error: Training module not found.")
+    def run_training_pipeline(): print("Error: Training module not found in src/.")
 
-def run_demo():
-    print("\n" + "*"*50)
-    print("* DEMO MODE (Coming Soon)             *")
-    print("*"*50)
-    print("This feature is currently under construction.")
-    print("Please implement the demo logic in src/demo/...")
-    input("\nPress Enter to return to menu...")
+try:
+    from app import run_from_main
+except ImportError as e:
+    print(f"Warning: app.py not found in root: {e}")
+    def run_from_main(): print("Error: app.py not found. Please create it first.")
 
 def show_menu():
     print("\n" + "="*50)
@@ -30,7 +26,7 @@ def show_menu():
     print("Please select an operation mode:")
     print("1. [Data Prep]  Download & Prepare Dataset")
     print("2. [Training]   Train Model & Evaluate")
-    print("3. [Demo]       Run Live Demo")
+    print("3. [Demo]       Run Live Demo (Gradio)")
     print("0. Exit")
     print("-" * 50)
 
@@ -50,7 +46,8 @@ def main():
             print("\n>>> Training Pipeline Finished.")
 
         elif choice == '3':
-            run_demo()
+            print("\n>>> Launching Gradio Demo...")
+            run_from_main()
 
         elif choice == '0':
             print("\nExiting program. Goodbye!")
