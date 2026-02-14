@@ -148,7 +148,8 @@ def main():
         
         st.divider()
         
-
+        # تغییر اصلی اینجاست: استفاده از st.toggle بجای st.checkbox
+        # این دکمه ظاهر شیک‌تری دارد (مثل دکمه روشن/خاموش آیفون)
         show_heatmap = st.toggle("Enable Saliency Map (Heatmap)", value=True)
         
         st.info(f"Active Model: {selected_model_file.replace('.keras', '')}\n\nInterval: Every {analysis_interval}s")
@@ -196,6 +197,7 @@ def main():
                     
                     best = np.argmax(p)
                     
+                    # لاجیک هیت‌مپ فقط اگر دکمه Toggle روشن باشد اجرا می‌شود
                     if show_heatmap and last_layer_name:
                         heatmap = make_gradcam_heatmap(inp, model, last_layer_name)
                         if heatmap is not None:
@@ -230,6 +232,7 @@ def main():
         col_cam, col_stats = st.columns([1.5, 1])
         
         with col_cam:
+            # تغییر: استفاده از Toggle برای دکمه دوربین هم جذاب است
             run = st.toggle("Start Camera", value=False) 
             image_placeholder = st.empty()
             
