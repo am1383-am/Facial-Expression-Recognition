@@ -39,8 +39,6 @@ This project addresses the challenge of classifying human facial expressions int
 
 - Optimization: Hyperparameter tuning of learning rates and optimizers (Adam/SGD).
 
----
-
 ### Key Objectives
 
 **Data Pipeline**: Implementing a robust flow for image normalization and augmentation.
@@ -54,8 +52,6 @@ This project addresses the challenge of classifying human facial expressions int
 **Live Demo**: Integrated Gradio/OpenCV interface for real-time testing.
 **Performance Metrics**: Detailed Confusion Matrix and F1-Score reports.
 **Modular Design**: Separated concerns for training, evaluation, and inference.
-
----
 
 ## Project_Structure
 
