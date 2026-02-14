@@ -1,23 +1,12 @@
-# --- Core Data Science ---
-numpy
-pandas
-scikit-learn
-
-# --- Computer Vision ---
+tensorflow
+streamlit
 opencv-python
-Pillow
-
-# --- Visualization ---
+pandas
+numpy
 matplotlib
 seaborn
-
-# --- Deep Learning (PyTorch) ---
-torch
-torchvision
-torchaudio
-
-# --- Utils & Tools ---
-tqdm
+plotly
+scikit-learn
+Pillow
 kagglehub
-jupyter
-notebook
+tqdm
