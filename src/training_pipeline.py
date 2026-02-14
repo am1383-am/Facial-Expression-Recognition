@@ -10,8 +10,14 @@ from src.training.train import train_model
 from src.evaluation.evaluator import evaluate_model 
 from src.utils.plot_results import plot_history
 EMOTIONS = {
-    'angry': 0, 'disgust': 1, 'fear': 2, 'happy': 3,
-    'sad': 4, 'surprise': 5, 'neutral': 6, 'contempt': 7
+    'angry': 0,
+    'contempt': 1,
+    'disgust': 2,
+    'fear': 3,
+    'happy': 4,
+    'neutral': 5,
+    'sad': 6,
+    'surprise': 7
 }
 
 def main():
