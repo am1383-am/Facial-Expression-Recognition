@@ -1,5 +1,6 @@
 import sys
 import os
+import subprocess
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -13,11 +14,22 @@ try:
 except ImportError as e:
     def run_training_pipeline(): print("Error: Training module not found in src/.")
 
-try:
-    from app import run_from_main
-except ImportError as e:
-    print(f"Warning: app.py not found in root: {e}")
-    def run_from_main(): print("Error: app.py not found. Please create it first.")
+def run_streamlit_demo():
+    app_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "app.py")
+    
+    if not os.path.exists(app_path):
+        print(f"Error: '{app_path}' not found. Please create app.py first.")
+        return
+
+    print("\n>>> Launching Streamlit UI...")
+    print(">>> Press Ctrl+C in the terminal to stop the demo and return to menu.\n")
+    
+    try:
+        subprocess.run([sys.executable, "-m", "streamlit", "run", app_path])
+    except KeyboardInterrupt:
+        print("\n>>> Streamlit stopped by user.")
+    except Exception as e:
+        print(f"\n>>> Error launching Streamlit: {e}")
 
 def show_menu():
     print("\n" + "="*50)
@@ -26,7 +38,7 @@ def show_menu():
     print("Please select an operation mode:")
     print("1. [Data Prep]  Download & Prepare Dataset")
     print("2. [Training]   Train Model & Evaluate")
-    print("3. [Demo]       Run Live Demo (Gradio)")
+    print("3. [Demo]       Run Live Demo (Streamlit)")
     print("0. Exit")
     print("-" * 50)
 
@@ -46,8 +58,7 @@ def main():
             print("\n>>> Training Pipeline Finished.")
 
         elif choice == '3':
-            print("\n>>> Launching Gradio Demo...")
-            run_from_main()
+            run_streamlit_demo()
 
         elif choice == '0':
             print("\nExiting program. Goodbye!")
