@@ -49,12 +49,12 @@ The project is structured into two main phases, simulating a real-world AI devel
 
 ## 🚀 Features
 
-* **End-to-End Pipeline:** A complete workflow converting raw pixel data into one of **8 emotion categories** (Angry, Contempt, Disgust, Fear, Happy, Neutral, Sad, Surprise).
-* **Interactive Web Interface:** A user-friendly dashboard built with **Streamlit**, supporting both **Live Webcam** feed and **Image Upload**.
-* **Explainable AI (XAI):** Integrated **Grad-CAM (Gradient-weighted Class Activation Mapping)** visualization. This allows users to see a "Heatmap" overlay, revealing exactly which parts of the face the model focuses on to make a decision.
-* **Real-Time Analytics:** Live visualization of emotion probabilities using dynamic **Plotly** bar charts and confidence metrics.
-* **Robust Preprocessing:**  resizing (48x48), grayscale conversion, and normalization.
-* **Modular Design:** Structured codebase separating training logic, model architecture, and the frontend interface.
+- **End-to-End Pipeline:** A complete workflow converting raw pixel data into one of **8 emotion categories** (Angry, Contempt, Disgust, Fear, Happy, Neutral, Sad, Surprise).
+- **Interactive Web Interface:** A user-friendly dashboard built with **Streamlit**, supporting both **Live Webcam** feed and **Image Upload**.
+- **Explainable AI (XAI):** Integrated **Grad-CAM (Gradient-weighted Class Activation Mapping)** visualization. This allows users to see a "Heatmap" overlay, revealing exactly which parts of the face the model focuses on to make a decision.
+- **Real-Time Analytics:** Live visualization of emotion probabilities using dynamic **Plotly** bar charts and confidence metrics.
+- **Robust Preprocessing:** resizing (48x48), grayscale conversion, and normalization.
+- **Modular Design:** Structured codebase separating training logic, model architecture, and the frontend interface.
 
 ## 📂 Project Structure
 
@@ -94,6 +94,7 @@ The project is structured into two main phases, simulating a real-world AI devel
 This project utilizes a **centralized CLI (Command Line Interface)** to manage the entire lifecycle of the project. You do not need to run individual scripts manually.
 
 ### 1. Setup Environment
+
 First, clone the repository and install the required dependencies:
 
 ```bash
@@ -111,16 +112,17 @@ Simply execute the `main.py` script to access the interactive project menu:
 ```bash
 python main.py
 ```
+
 ### 3. Operation Modes
 
 Once launched, you will see a menu to select the desired operation:
 
-| Option | Mode | Description |
-| :--- | :--- | :--- |
-| **1** | **[Data Prep]** | Automatically downloads the **FERPlus** dataset and runs the preprocessing pipeline. |
-| **2** | **[Training]** | Executes the full Deep Learning pipeline: trains the model, runs evaluation, and saves the best weights. |
-| **3** | **[Demo]** | Launches the **Streamlit Web Interface** for real-time webcam testing and visualization. |
-| **0** | **Exit** | Closes the application. |
+| Option | Mode            | Description                                                                                              |
+| :----- | :-------------- | :------------------------------------------------------------------------------------------------------- |
+| **1**  | **[Data Prep]** | Automatically downloads the **FERPlus** dataset and runs the preprocessing pipeline.                     |
+| **2**  | **[Training]**  | Executes the full Deep Learning pipeline: trains the model, runs evaluation, and saves the best weights. |
+| **3**  | **[Demo]**      | Launches the **Streamlit Web Interface** for real-time webcam testing and visualization.                 |
+| **0**  | **Exit**        | Closes the application.                                                                                  |
 
 ## 📥 Data Acquisition & Preparation
 
@@ -136,76 +138,89 @@ The project features a fully automated data pipeline managed by `src/data_prepar
 The project pipeline consists of three core stages implemented in the `src/` directory:
 
 ### 1. Data Pipeline (`data_loader.py`)
+
 We utilize **ImageDataGenerator** for dynamic data loading and augmentation to ensure robustness.
-* **Input:** Resized to **48x48 Grayscale** pixels.
-* **Splitting:** Stratified split into **Train (80%)**, **Validation (10%)**, and **Test (10%)** sets.
-* **Augmentation:** Applies real-time transformations (Rotation, Zoom, Shifts, Flips) to the training set to prevent overfitting.
+
+- **Input:** Resized to **48x48 Grayscale** pixels.
+- **Splitting:** Stratified split into **Train (80%)**, **Validation (10%)**, and **Test (10%)** sets.
+- **Augmentation:** Applies real-time transformations (Rotation, Zoom, Shifts, Flips) to the training set to prevent overfitting.
 
 ### 2. Model Architectures
+
 Two distinct architectures were designed to benchmark performance:
-* **Baseline Model (`baseline_model.py`):** A lightweight CNN with 3 standard Convolutional blocks to establish a performance baseline.
-* **Final Model (`final_model.py`):** A deeper, **VGG-style architecture** featuring **Double Convolutions**, **Batch Normalization**, **L2 Regularization**, and increasing **Dropout rates** (0.2 → 0.5) for maximum feature extraction and generalization.
+
+- **Baseline Model (`baseline_model.py`):** A lightweight CNN with 3 standard Convolutional blocks to establish a performance baseline.
+- **Final Model (`final_model.py`):** A deeper, **VGG-style architecture** featuring **Double Convolutions**, **Batch Normalization**, **L2 Regularization**, and increasing **Dropout rates** (0.2 → 0.5) for maximum feature extraction and generalization.
 
 ### 3. Training Protocol (`train.py`)
+
 The model is optimized using **Adam** with **Categorical Cross-Entropy** loss, utilizing advanced callbacks:
-* **ModelCheckpoint:** Saves the best model based on validation accuracy.
-* **EarlyStopping:** Halts training if loss stagnates (Patience: 8).
-* **ReduceLROnPlateau:** Reduces learning rate by factor of 0.2 when validation improvement slows down.
+
+- **ModelCheckpoint:** Saves the best model based on validation accuracy.
+- **EarlyStopping:** Halts training if loss stagnates (Patience: 8).
+- **ReduceLROnPlateau:** Reduces learning rate by factor of 0.2 when validation improvement slows down.
 
 ## 📊 Evaluation & Results
 
 We employ a comprehensive set of metrics including **Accuracy, Weighted F1-Score, and Confusion Matrices** to rigorously assess model performance across all 8 emotion classes.
 
-* **Training Analysis:** Loss and Accuracy curves are plotted to monitor convergence and detect overfitting or underfitting issues.
-* **Detailed Reports:** For full visual analysis, including **ROC Curves and Heatmaps**, please refer to the Jupyter Notebooks in the `notebooks/` directory:
-    * [📈 Training Viz](notebooks/Visualizing%20during%20training.ipynb)
-    * [🧪 Model Evaluation](notebooks/evaluation.ipynb)
-    * [🧹 Data Preparation](notebooks/data_preparation.ipynb)
-    * [📊 EDA Analysis](notebooks/EDA.ipynb)
+- **Training Analysis:** Loss and Accuracy curves are plotted to monitor convergence and detect overfitting or underfitting issues.
+- **Detailed Reports:** For full visual analysis, including **ROC Curves and Heatmaps**, please refer to the Jupyter Notebooks in the `notebooks/` directory:
+  - [📈 Training Viz](notebooks/Visualizing%20during%20training.ipynb)
+  - [🧪 Model Evaluation](notebooks/evaluation.ipynb)
+  - [🧹 Data Preparation](notebooks/data_preparation.ipynb)
+  - [📊 EDA Analysis](notebooks/EDA.ipynb)
 
 ## 💻 Interactive Web Interface (Demo)
 
 The project features a polished, user-friendly web application built with **Streamlit**, designed to demonstrate the model's capabilities in real-time.
 
 ### How to Launch
+
 You can start the demo directly via the command line:
+
 ```bash
 streamlit run app.py
 ```
+
 (Or select Option 3 in the `main.py` menu)
 
 ### Key Features
 
-* **Dual Input Modes:** Supports both **Real-time Webcam** (with adjustable processing interval) and **Static Image Upload**.
-* **Explainable AI (XAI):** Integrated **Grad-CAM Heatmaps** to visualize the model's focus areas (e.g., eyes/mouth) for better interpretability.
-* **Dynamic Model Switching:** Instantly swap between different architectures (e.g., `baseline` vs `final`) via the sidebar without restarting.
-* **Live Analytics:** Interactive **Plotly** probability charts for all 8 emotions.
+- **Dual Input Modes:** Supports both **Real-time Webcam** (with adjustable processing interval) and **Static Image Upload**.
+- **Explainable AI (XAI):** Integrated **Grad-CAM Heatmaps** to visualize the model's focus areas (e.g., eyes/mouth) for better interpretability.
+- **Dynamic Model Switching:** Instantly swap between different architectures (e.g., `baseline` vs `final`) via the sidebar without restarting.
+- **Live Analytics:** Interactive **Plotly** probability charts for all 8 emotions.
 
 ![Web Interface Demo](results/demo_interface.png)
 
 ## ⚠️ Important Notes
 
 ### 1. Face Detection Dependency
+
 The real-time demo relies on **OpenCV Haar Cascades** for face detection.
-* **Lighting:** Ensure the face is well-lit for accurate detection.
-* **Orientation:** The current cascade (`haarcascade_frontalface_default.xml`) works best on frontal faces. Profile or tilted faces might not be detected.
+
+- **Lighting:** Ensure the face is well-lit for accurate detection.
+- **Orientation:** The current cascade (`haarcascade_frontalface_default.xml`) works best on frontal faces. Profile or tilted faces might not be detected.
 
 ### 2. Input Requirements
-* **Grayscale Only:** The models are trained specifically on **Grayscale** images. The pipeline automatically converts any RGB input to grayscale before inference.
-* **Resolution:** All inputs are resized to **48x48 pixels** internally. Providing high-resolution images is fine, but fine details might be lost during downsampling.
+
+- **Grayscale Only:** The models are trained specifically on **Grayscale** images. The pipeline automatically converts any RGB input to grayscale before inference.
+- **Resolution:** All inputs are resized to **48x48 pixels** internally. Providing high-resolution images is fine, but fine details might be lost during downsampling.
 
 ### 3. Execution Directory
+
 All scripts (e.g., `main.py`, `app.py`) are designed to be run from the **project root directory**. Running them from inside subfolders (like `src/`) may cause `FileNotFoundError` for models or data config files.
 
 ## 👥 Authors & Contact
 
 This project was developed by a **3-member team** for the **Artificial Intelligence Course (Fall 2024)** at **K. N. Toosi University of Technology**.
 
-| Name | Email |
-| :--- | :--- |
-| **Parham Kootzari** | pkootzari1383@gmail.com |
-| **[Team Member 2 Name]** | [Email Address] |
-| **[Team Member 3 Name]** | [Email Address] |
+| Name                     | Email                        |
+| :----------------------- | :--------------------------- |
+| **Parham Kootzari**      | pkootzari1383@gmail.com      |
+| **[AmirHossein Babaee]** | amirhoseinbabaee83@gmail.com |
+| **[Team Member 3 Name]** | [Email Address]              |
 
 ---
 
