@@ -219,8 +219,8 @@ This project was developed by a **3-member team** for the **Artificial Intellige
 | Name                     | Email                        |
 | :----------------------- | :--------------------------- |
 | **Parham Kootzari**      | pkootzari1383@gmail.com      |
-| **[AmirHossein Babaee]** | amirhoseinbabaee83@gmail.com |
-| **[Team Member 3 Name]** | [Email Address]              |
+| **AmirHossein Babaee**   | amirhoseinbabaee83@gmail.com |
+| **Soroush Soleimani**    | Soroushsoleimani1s@gmail.com |
 
 ---
 
