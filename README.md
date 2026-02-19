@@ -89,7 +89,7 @@ The project is structured into two main phases, simulating a real-world AI devel
 └── .gitignore                  # Git configuration
 ```
 
-## ⚙️ Installation & Usage
+##  Installation & Usage
 
 This project utilizes a **centralized CLI (Command Line Interface)** to manage the entire lifecycle of the project. You do not need to run individual scripts manually.
 
