@@ -1,4 +1,5 @@
-[![GitHub stars](https://img.shields.io/github/stars/SoroushSoleimani/Facial-Expression-Recognition?style=for-the-badge&color=yellow)](https://github.com/SoroushSoleimani/Facial-Expression-Recognition/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/SoroushSoleimani/Facial-Expression-Recognition?style=social)](https://github.com/SoroushSoleimani/Facial-Expression-Recognition/stargazers)
+
 
 # Facial Expression Recognition (FER)
 
